@@ -40,7 +40,7 @@ export default function MenuList() {
         <Icons.video width={16} />
       </Button>
 
-      <Button
+      {/* <Button
         onClick={() => {
           setActiveMenuItem("images");
           setShowMenuItem(true);
@@ -54,8 +54,8 @@ export default function MenuList() {
         size={"icon"}
       >
         <Icons.image width={16} />
-      </Button>
-      {/* <Button
+      </Button> */}
+      <Button
         onClick={() => {
           setActiveMenuItem("shapes");
           setShowMenuItem(true);
@@ -69,7 +69,7 @@ export default function MenuList() {
         size={"icon"}
       >
         <Icons.shapes width={16} />
-      </Button> */}
+      </Button>
       <Button
         onClick={() => {
           setActiveMenuItem("audios");

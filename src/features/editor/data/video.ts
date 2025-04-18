@@ -28,7 +28,7 @@ export const VIDEOS = [
   {
     id: "video100",
     details: {
-      src: "https://cdn.designcombo.dev/videos/Happiness%20shouldn%E2%80%99t%20depend.mp4",
+      src: "videos/sample.mp4",
     },
     type: "video",
     preview:
