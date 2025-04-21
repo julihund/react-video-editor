@@ -167,7 +167,7 @@ const Header = () => {
               size={"sm"}
               className="flex items-center gap-1 px-2"
             >
-              <Trash size={14} /> Delete
+              <Trash size={14} /> Teile markieren
             </Button>
 
             <Button
@@ -177,7 +177,7 @@ const Header = () => {
               size={"sm"}
               className="flex items-center gap-1 px-2"
             >
-              <SquareSplitHorizontal size={15} /> Split
+              <SquareSplitHorizontal size={15} /> Schritt markieren
             </Button>
             <Button
               disabled={!activeIds.length}
@@ -188,7 +188,7 @@ const Header = () => {
               size={"sm"}
               className="flex items-center gap-1 px-2"
             >
-              <SquareSplitHorizontal size={15} /> Clone
+              <SquareSplitHorizontal size={15} /> Endzustand markieren
             </Button>
           </div>
           <div className="flex items-center justify-center">

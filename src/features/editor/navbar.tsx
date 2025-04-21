@@ -23,6 +23,7 @@ import { useDownloadState } from "./store/use-download-state";
 import DownloadProgressModal from "./download-progress-modal";
 import AutosizeInput from "@/components/ui/autosize-input";
 import { debounce } from "lodash";
+import MontavisLogo from "@/assets/montavis_logo_white.svg";
 
 export default function Navbar({
   stateManager,
@@ -118,39 +119,27 @@ export default function Navbar({
           >
             <Icons.redo width={20} />
           </Button>
+          <DownloadPopover stateManager={stateManager} />
         </div>
       </div>
 
       <div className="flex h-14 items-center justify-center gap-2">
-        <div className="bg-sidebar pointer-events-auto flex h-12 items-center gap-2 rounded-md px-2.5 text-muted-foreground">
+        <div className="bg-sidebar pointer-events-auto flex h-12 items-center gap-2 rounded-md px-3 text-muted-foreground">
           <AutosizeInput
             name="title"
             value={title}
             onChange={handleTitleChange}
-            width={200}
+            width={350}
             inputClassName="border-none outline-none px-1 bg-background text-sm font-medium text-zinc-200"
           />
         </div>
       </div>
 
       <div className="flex h-14 items-center justify-end gap-2">
-        <div className="bg-sidebar pointer-events-auto flex h-12 items-center gap-2 rounded-md px-2.5">
-          <Button
-            className="flex h-8 gap-1 border border-border"
-            variant="outline"
-          >
-            <ShareIcon width={18} /> Share
-          </Button>
-          <DownloadPopover stateManager={stateManager} />
-          <Button
-            className="flex h-8 gap-1 border border-border"
-            variant="default"
-            onClick={() => {
-              window.open("https://discord.gg/jrZs3wZyM5", "_blank");
-            }}
-          >
-            Discord
-          </Button>
+        <div className="bg-sidebar pointer-events-auto flex h-10 items-center gap-2 rounded-md px-2">
+          <div className="flex items-center">
+            <img src={MontavisLogo} alt="Logo" className="h-6 w-auto" />
+          </div>
         </div>
       </div>
     </div>
