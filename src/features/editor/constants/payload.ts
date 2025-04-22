@@ -27,3 +27,26 @@ export const TEXT_ADD_PAYLOAD = {
     },
   },
 };
+
+
+export const BOX_ADD_PAYLOAD = {
+  type: 'box',
+  details: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#000000',
+    opacity: 1,
+    borderRadius: 0
+  }
+};
+
+export const CIRCLE_ADD_PAYLOAD = {
+  type: 'circle',
+  details: {
+    width: 100,
+    height: 100,
+    backgroundColor: '#000000',
+    opacity: 1,
+    borderRadius: 50
+  }
+};

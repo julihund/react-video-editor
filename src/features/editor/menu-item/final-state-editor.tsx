@@ -5,6 +5,7 @@ import { useIsDraggingOverTimeline } from "../hooks/is-dragging-over-timeline";
 import Draggable from "@/components/shared/draggable";
 import { TEXT_ADD_PAYLOAD } from "../constants/payload";
 import { cn } from "@/lib/utils";
+import { Elements } from "./elements";
 
 export const FinalStateEditor = () => {
   const isDraggingOverTimeline = useIsDraggingOverTimeline();
@@ -18,30 +19,10 @@ export const FinalStateEditor = () => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <div className="text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium">
-        Endzustand Editor
+      <div className="text-text-primary flex h-12 flex-none items-center justify-center px-4 text-xl font-semibold">
+        Editor
       </div>
-      <div className="flex flex-col gap-2 px-4">
-        <Draggable
-          data={TEXT_ADD_PAYLOAD}
-          renderCustomPreview={
-            <Button variant="secondary" className="w-60">
-              Add text
-            </Button>
-          }
-          shouldDisplayPreview={!isDraggingOverTimeline}
-        >
-          <div
-            onClick={handleAddText}
-            className={cn(
-              buttonVariants({ variant: "secondary" }),
-              "cursor-pointer",
-            )}
-          >
-            Add text
-          </div>
-        </Draggable>
-      </div>
+      <Elements />
     </div>
   );
 };

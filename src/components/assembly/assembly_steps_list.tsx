@@ -7,12 +7,11 @@ interface AssemblyStep {
 }
 
 interface Props {
-  heading: string;
   onSelectItem?: (item: AssemblyStep) => void;
 }
 
 
-const AssemblyStepsList = ({ heading, onSelectItem }: Props) => {
+const AssemblyStepsList = ({ onSelectItem }: Props) => {
   const [assemblySteps, setAssemblySteps] = useState<AssemblyStep[]>([]);
 
   const fetchAssemblyStepsList = async () => {
@@ -30,7 +29,7 @@ const AssemblyStepsList = ({ heading, onSelectItem }: Props) => {
 
   return (
     <div className="p-4">
-      <div className="text-text-primary flex h-12 flex-none items-center px-4 text-xl font-semibold">
+      <div className="text-text-primary flex h-12 flex-none items-center justify-center px-4 text-xl font-semibold">
         Montageübersicht
       </div>
       <ul className="space-y-2">

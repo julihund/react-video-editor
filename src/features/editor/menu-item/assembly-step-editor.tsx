@@ -18,8 +18,8 @@ export const AssemblyStepEditor = () => {
 
   return (
     <div className="flex flex-1 flex-col">
-      <div className="text-text-primary flex h-12 flex-none items-center px-4 text-sm font-medium">
-        Montagevideo Editor
+      <div className="text-text-primary flex h-12 flex-none items-center justify-center px-4 text-xl font-semibold">
+        Editor
       </div>
       <div className="flex flex-col gap-2 px-4">
         <Draggable
