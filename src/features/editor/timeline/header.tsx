@@ -9,7 +9,6 @@ import {
 import { PLAYER_PAUSE, PLAYER_PLAY } from "../constants/events";
 import { frameToTimeString, getCurrentTime, timeToString } from "../utils/time";
 import useStore from "../store/use-store";
-import { SquareSplitHorizontal, Trash, ZoomIn, ZoomOut } from "lucide-react";
 import {
   getFitZoomLevel,
   getNextZoomLevel,
@@ -21,6 +20,11 @@ import { Slider } from "@/components/ui/slider";
 import { useEffect, useState } from "react";
 import useUpdateAnsestors from "../hooks/use-update-ansestors";
 import { ITimelineScaleState } from "@designcombo/types";
+
+import useLayoutStore from "../store/use-layout-store";
+import { Icons } from "@/components/shared/icons";
+import { cn } from "@/lib/utils";
+import { Menu, SquareSplitHorizontal, Trash, ZoomIn, ZoomOut } from "lucide-react";
 
 const IconPlayerPlayFilled = ({ size }: { size: number }) => (
   <svg
@@ -133,6 +137,9 @@ const Header = () => {
     };
   }, [playerRef]);
 
+  const { setActiveMenuItem, setShowMenuItem, activeMenuItem, showMenuItem } =
+    useLayoutStore();
+
   return (
     <div
       style={{
@@ -160,19 +167,27 @@ const Header = () => {
           }}
         >
           <div className="flex px-2">
+
             <Button
-              disabled={!activeIds.length}
-              onClick={doActiveDelete}
+              onClick={() => {
+                doActiveDelete;
+                setActiveMenuItem("select-assembly-part");
+                setShowMenuItem(true);
+              }}
               variant={"ghost"}
               size={"sm"}
               className="flex items-center gap-1 px-2"
             >
-              <Trash size={14} /> Teile markieren
+              <Icons.portrait size={14} /> Teile markieren
             </Button>
 
             <Button
-              disabled={!activeIds.length}
-              onClick={doActiveSplit}
+              onClick={() => {
+                setActiveMenuItem("edit-assembly-step");
+                setShowMenuItem(true);
+                doActiveSplit;
+              }}
+        
               variant={"ghost"}
               size={"sm"}
               className="flex items-center gap-1 px-2"
@@ -180,22 +195,22 @@ const Header = () => {
               <SquareSplitHorizontal size={15} /> Schritt markieren
             </Button>
             <Button
-              disabled={!activeIds.length}
               onClick={() => {
+                setActiveMenuItem("edit_final_state");
+                setShowMenuItem(true);
                 dispatch(LAYER_CLONE);
               }}
               variant={"ghost"}
               size={"sm"}
+            
               className="flex items-center gap-1 px-2"
+
             >
-              <SquareSplitHorizontal size={15} /> Endzustand markieren
+              <Icons.image size={15} /> Endzustand markieren
             </Button>
           </div>
           <div className="flex items-center justify-center">
             <div>
-              <Button onClick={doActiveDelete} variant={"ghost"} size={"icon"}>
-                <IconPlayerSkipBack size={14} />
-              </Button>
               <Button
                 onClick={() => {
                   if (playing) {
@@ -203,6 +218,11 @@ const Header = () => {
                   }
                   handlePlay();
                 }}
+                className={cn(
+                          showMenuItem && activeMenuItem === "select-assembly-part"
+                            ? "bg-secondary"
+                            : "text-muted-foreground",
+                        )}
                 variant={"ghost"}
                 size={"icon"}
               >
@@ -211,9 +231,6 @@ const Header = () => {
                 ) : (
                   <IconPlayerPlayFilled size={14} />
                 )}
-              </Button>
-              <Button onClick={doActiveSplit} variant={"ghost"} size={"icon"}>
-                <IconPlayerSkipForward size={14} />
               </Button>
             </div>
             <div
@@ -293,7 +310,7 @@ const ZoomControl = ({
 
   return (
     <div className="flex items-center justify-end">
-      <div className="flex border-l border-border pl-4 pr-2">
+      <div className="flex border-border pl-4 pr-2">
         <Button size={"icon"} variant={"ghost"} onClick={onZoomOutClick}>
           <ZoomOut size={16} />
         </Button>

@@ -14,13 +14,14 @@ import {
 import { ImperativePanelHandle } from "react-resizable-panels";
 import { getCompactFontData, loadFonts } from "./utils/fonts";
 import { SECONDARY_FONT, SECONDARY_FONT_URL } from "./constants/constants";
-import MenuList from "./menu-list";
 import { MenuItem } from "./menu-item";
 import { ControlItem } from "./control-item";
 import CropModal from "./crop-modal/crop-modal";
 import useDataState from "./store/use-data-state";
 import { FONTS } from "./data/fonts";
 import FloatingControl from "./control-item/floating-controls/floating-control";
+
+import AssemblyStepsList from "@/components/assembly/assembly_steps_list";
 
 const stateManager = new StateManager({
   size: {
@@ -30,7 +31,7 @@ const stateManager = new StateManager({
 });
 
 const Editor = () => {
-  const [projectName, setProjectName] = useState<string>("Untitled video");
+  const [projectName, setProjectName] = useState<string>("Name Montageanleitung");
   const timelinePanelRef = useRef<ImperativePanelHandle>(null);
   const { timeline, playerRef } = useStore();
 
@@ -94,7 +95,6 @@ const Editor = () => {
             <FloatingControl />
             <div className="flex h-full flex-1">
               <div className="bg-sidebar flex flex-none border-r border-border/80">
-                <MenuList />
                 <MenuItem />
               </div>
               <div
@@ -109,6 +109,9 @@ const Editor = () => {
                 <CropModal />
                 <Scene stateManager={stateManager} />
               </div>
+              <div className="bg-sidebar flex flex-none border-l border-border/80">
+                <AssemblyStepsList />
+              </div>
             </div>
           </ResizablePanel>
           <ResizableHandle />
@@ -121,7 +124,7 @@ const Editor = () => {
             {playerRef && <Timeline stateManager={stateManager} />}
           </ResizablePanel>
         </ResizablePanelGroup>
-        <ControlItem />
+        
       </div>
     </div>
   );

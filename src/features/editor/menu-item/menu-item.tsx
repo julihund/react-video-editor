@@ -1,38 +1,28 @@
 import useLayoutStore from "../store/use-layout-store";
-import { Texts } from "./texts";
-import { Audios } from "./audios";
-import { Elements } from "./elements";
-import { Images } from "./images";
-import { Videos } from "./videos";
+
+import { AssemblyStepEditor } from "./assembly-step-editor";
+import { FinalStateEditor} from "./final-state-editor";
+import { AssemblyPartEditor } from "./assembly-part-editor";  
 
 const ActiveMenuItem = () => {
   const { activeMenuItem } = useLayoutStore();
 
-  if (activeMenuItem === "texts") {
-    return <Texts />;
+  if (activeMenuItem === "edit-assembly-step") {
+    return <AssemblyStepEditor />;
   }
-  if (activeMenuItem === "shapes") {
-    return <Elements />;
+  if (activeMenuItem === "select-assembly-part") {
+    return <AssemblyPartEditor />;
   }
-  if (activeMenuItem === "videos") {
-    return <Videos />;
+  if (activeMenuItem === "edit_final_state") {
+    return <FinalStateEditor />;
   }
-
-  if (activeMenuItem === "audios") {
-    return <Audios />;
-  }
-
-  if (activeMenuItem === "images") {
-    return <Images />;
-  }
-
   return null;
 };
 
 export const MenuItem = () => {
   return (
     <div className="w-[300px] flex-1">
-      <ActiveMenuItem />
+       < ActiveMenuItem />
     </div>
   );
 };

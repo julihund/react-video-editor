@@ -76,32 +76,7 @@ export default function Navbar({
       <DownloadProgressModal />
 
       <div className="flex items-center gap-2">
-        <div className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-md text-zinc-200">
-          <DropdownMenu>
-            <DropdownMenuTrigger>
-              <div className="hover:bg-background-subtle flex h-8 w-8 items-center justify-center">
-                <MenuIcon className="h-5 w-5" />
-              </div>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="z-[300] w-56 p-2" align="start">
-              <DropdownMenuItem
-                onClick={handleCreateProject}
-                className="cursor-pointer text-muted-foreground"
-              >
-                New project
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer text-muted-foreground">
-                My projects
-              </DropdownMenuItem>
-              <DropdownMenuItem
-                onClick={handleCreateProject}
-                className="cursor-pointer text-muted-foreground"
-              >
-                Duplicate project
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
+
         <div className="bg-sidebar pointer-events-auto flex h-12 items-center px-1.5">
           <Button
             onClick={handleUndo}
@@ -122,24 +97,10 @@ export default function Navbar({
           <DownloadPopover stateManager={stateManager} />
         </div>
       </div>
-
       <div className="flex h-14 items-center justify-center gap-2">
-        <div className="bg-sidebar pointer-events-auto flex h-12 items-center gap-2 rounded-md px-3 text-muted-foreground">
-          <AutosizeInput
-            name="title"
-            value={title}
-            onChange={handleTitleChange}
-            width={350}
-            inputClassName="border-none outline-none px-1 bg-background text-sm font-medium text-zinc-200"
-          />
-        </div>
-      </div>
-
-      <div className="flex h-14 items-center justify-end gap-2">
-        <div className="bg-sidebar pointer-events-auto flex h-10 items-center gap-2 rounded-md px-2">
-          <div className="flex items-center">
-            <img src={MontavisLogo} alt="Logo" className="h-6 w-auto" />
-          </div>
+        <div className="bg-sidebar pointer-events-auto flex h-12 items-center gap-3 rounded-md px-4 py-1">
+          <img src={MontavisLogo} alt="Logo" className="h-6 w-auto" />
+          <p className="text-lg font-medium text-muted-foreground">Editor</p>
         </div>
       </div>
     </div>
