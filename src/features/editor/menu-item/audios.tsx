@@ -1,6 +1,5 @@
 import Draggable from "@/components/shared/draggable";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { AUDIOS } from "../data/audio";
 import { dispatch } from "@designcombo/events";
 import { ADD_AUDIO } from "@designcombo/state";
 import { IAudio } from "@designcombo/types";
@@ -27,16 +26,7 @@ export const Audios = () => {
       </div>
       <ScrollArea>
         <div className="flex flex-col px-2">
-          {AUDIOS.map((audio, index) => {
-            return (
-              <AudioItem
-                shouldDisplayPreview={!isDraggingOverTimeline}
-                handleAddAudio={handleAddAudio}
-                audio={audio}
-                key={index}
-              />
-            );
-          })}
+         
         </div>
       </ScrollArea>
     </div>

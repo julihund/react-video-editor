@@ -4,10 +4,16 @@ export type IMenuItem =
   | "edit-assembly-step"
   | "select-assembly-part"
   | "edit_final_state";
+
+export type IEditorItem =
+  | "edit-assembly-step"
+  | "select-assembly-part"
+  | "edit_final_state";
 export interface ILayoutState {
   cropTarget: ITrackItem | null;
   trackItem: ITrackItem | null;
   activeMenuItem: IMenuItem | null;
+  activeEditor: IEditorItem | null;
   showMenuItem: boolean;
   showControlItem: boolean;
   showToolboxItem: boolean;
@@ -15,6 +21,7 @@ export interface ILayoutState {
   floatingControl: any; // "font-family-picker" | "text-preset-picker"| "animation-picker"
   setCropTarget: (cropTarget: ITrackItem | null) => void;
   setActiveMenuItem: (showMenu: IMenuItem | null) => void;
+  setActiveEditor: (activeEditor: IEditorItem | null) => void;
   setShowMenuItem: (showMenuItem: boolean) => void;
   setShowControlItem: (showControlItem: boolean) => void;
   setShowToolboxItem: (showToolboxItem: boolean) => void;

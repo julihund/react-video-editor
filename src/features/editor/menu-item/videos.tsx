@@ -1,6 +1,5 @@
 import Draggable from "@/components/shared/draggable";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { VIDEOS } from "../data/video";
 import { dispatch } from "@designcombo/events";
 import { ADD_VIDEO } from "@designcombo/state";
 import { generateId } from "@designcombo/timeline";
@@ -29,16 +28,7 @@ export const Videos = () => {
       </div>
       <ScrollArea>
         <div className="masonry-sm px-4">
-          {VIDEOS.map((video, index) => {
-            return (
-              <VideoItem
-                key={index}
-                video={video}
-                shouldDisplayPreview={!isDraggingOverTimeline}
-                handleAddImage={handleAddVideo}
-              />
-            );
-          })}
+         
         </div>
       </ScrollArea>
     </div>
